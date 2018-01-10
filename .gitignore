@@ -26,3 +26,4 @@ nbdist/
 
 out/
 .DS_Store
+data/
