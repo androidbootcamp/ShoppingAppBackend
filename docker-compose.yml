@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  spring:
+    build:
+      context: .
+      dockerfile: SpringDockerfile
+    image: shoppingapp
+    depends_on:
+          - postgres
+    ports:
+      - "8080:8080"
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: shoppingapp
+      POSTGRES_PASSWORD: shopping
+      POSTGRES_DB: shoppingapp
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./data/postgres/pgdata:/var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
